@@ -1,22 +1,22 @@
-import "./globals.css";
-import { Inter } from "next/font/google";
+import { Metadata } from 'next'
+import './globals.css'
+import { Inter } from 'next/font/google'
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Welcome | Abdur Rahim',
+  description: 'Welcome to my web portofolio',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-        />
-      </head>
-      <body className={inter.className}>{children}</body>
+    <html lang='en'>
+      <body className={`${inter.className} bg-screen-light`}>{children}</body>
     </html>
-  );
+  )
 }
