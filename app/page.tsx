@@ -8,12 +8,13 @@ import {
   BsInstagram,
   BsDownload,
   BsPinMapFill,
+  BsFillSunFill,
 } from 'react-icons/bs'
 import Image from 'next/image'
 import ProfileImage from '@/assets/images/profile.jpeg'
 import ButtonIcon from '@/components/ButtonIcon'
 import Button from '@/components/Button'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CardPortofolio from '@/components/CardPortofolio'
 import LogoCapsuleInn from '@/assets/images/capsule_inn.png'
 import LogoTutortpb from '@/assets/images/tutortpb.png'
@@ -29,6 +30,32 @@ import LogoMongodb from '@/assets/images/mongodb.png'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<string>('portofolio')
+  const [isDarkmode, setIsDarkmode] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (
+      localStorage.theme === 'dark' ||
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      document.documentElement.classList.add('dark')
+      setIsDarkmode(true)
+    } else {
+      document.documentElement.classList.remove('dark')
+      setIsDarkmode(false)
+    }
+  }, [])
+
+  const onMode = () => {
+    if (isDarkmode) {
+      document.documentElement.classList.remove('dark')
+      setIsDarkmode(false)
+      localStorage.theme = 'light'
+    } else {
+      document.documentElement.classList.add('dark')
+      setIsDarkmode(true)
+      localStorage.theme = 'dark'
+    }
+  }
 
   return (
     <div className='max-w-[500px] m-auto'>
@@ -36,37 +63,37 @@ export default function Home() {
         <Image
           src={ProfileImage}
           alt='profile'
-          className='w-[100px] h-[100px] rounded-full border-[2px] border-yellow-500'
+          className='w-[100px] h-[100px] rounded-full border-[2px] border-yellow-500 dark:border-yellow-300'
         />
         <div className='flex-1 ml-5'>
-          <p className='text-neutral-700 font-medium text-3xl mb-1'>
+          <p className='text-neutral-700 dark:text-white font-medium text-3xl mb-1'>
             Abdur Rahim
           </p>
-          <p className='text-neutral-700 mb-3 text-xs'>
+          <p className='text-neutral-700 dark:text-white mb-3 text-xs'>
             Fullstack Mobile Developer
           </p>
           <div className='flex flex-row'>
             <ButtonIcon
               Icon={<BsGithub size={16} />}
-              className='p-1 mr-2 text-neutral-700'
+              className='p-1 mr-2 text-neutral-700 dark:text-white'
               href='https://github.com/abdoerrahiem'
               target='_blank'
             />
             <ButtonIcon
               Icon={<BsLinkedin size={16} />}
-              className='p-1 mr-2 text-neutral-700'
+              className='p-1 mr-2 text-neutral-700 dark:text-white'
               href='https://www.linkedin.com/in/abdoerrahiem'
               target='_blank'
             />
             <ButtonIcon
               Icon={<BsFacebook size={16} />}
-              className='p-1 mr-2 text-neutral-700'
+              className='p-1 mr-2 text-neutral-700 dark:text-white'
               href='https://facebook.com/abdoerrahiem'
               target='_blank'
             />
             <ButtonIcon
               Icon={<BsInstagram size={16} />}
-              className='p-1 mr-2 text-neutral-700'
+              className='p-1 mr-2 text-neutral-700 dark:text-white'
               href='https://instagram.com/abdoerrahiem'
               target='_blank'
             />
@@ -76,31 +103,43 @@ export default function Home() {
 
       <div className='flex flex-row mb-8'>
         <div className='flex-1'>
-          <p className='text-base text-neutral-700 text-center font-medium'>
+          <p className='text-base text-neutral-700 text-center font-medium dark:text-white'>
             4
           </p>
-          <p className='text-sm text-neutral-700 text-center'>Years of work</p>
-          <p className='text-sm text-neutral-700 text-center'>experience</p>
+          <p className='text-sm text-neutral-700 text-center dark:text-white'>
+            Years of work
+          </p>
+          <p className='text-sm text-neutral-700 text-center dark:text-white'>
+            experience
+          </p>
         </div>
         <div className='flex-1'>
-          <p className='text-base text-neutral-700 text-center font-medium'>
+          <p className='text-base text-neutral-700 text-center font-medium dark:text-white'>
             5++
           </p>
-          <p className='text-sm text-neutral-700 text-center'>Completed</p>
-          <p className='text-sm text-neutral-700 text-center'>projects</p>
+          <p className='text-sm text-neutral-700 text-center dark:text-white'>
+            Completed
+          </p>
+          <p className='text-sm text-neutral-700 text-center dark:text-white'>
+            projects
+          </p>
         </div>
         <div className='flex-1'>
-          <p className='text-base text-neutral-700 text-center font-medium'>
+          <p className='text-base text-neutral-700 text-center font-medium dark:text-white'>
             5++
           </p>
-          <p className='text-sm text-neutral-700 text-center'>Satisfied</p>
-          <p className='text-sm text-neutral-700 text-center'>customers</p>
+          <p className='text-sm text-neutral-700 text-center dark:text-white'>
+            Satisfied
+          </p>
+          <p className='text-sm text-neutral-700 text-center dark:text-white'>
+            customers
+          </p>
         </div>
       </div>
 
       <div className='flex flex-row items-center mb-8 max-sm:px-4'>
-        <BsPinMapFill size={16} className='text-neutral-700' />
-        <p className='ml-1 text-sm text-neutral-700 font-medium'>
+        <BsPinMapFill size={16} className='text-neutral-700 dark:text-white' />
+        <p className='ml-2 text-sm text-neutral-700 font-medium dark:text-white'>
           Mempawah, West Kalimantan 🇮🇩
         </p>
       </div>
@@ -109,7 +148,7 @@ export default function Home() {
         <Button
           title='Download CV'
           RightComponent={<BsDownload size={14} className='ml-2 max-sm:ml-1' />}
-          className='flex-1 max-sm:px-3'
+          className='flex-1 max-sm:px-3 dark:bg-yellow-300'
           href='/AbdurCV.pdf'
           target='_blank'
           download={true}
@@ -118,31 +157,43 @@ export default function Home() {
         <div className='mx-2 max-sm:mx-1' />
         <Button
           title='Contact me'
-          className='!bg-white flex-1 max-sm:px-3'
+          className='!bg-white flex-1 max-sm:px-3 dark:!bg-neutral-800'
           href='https://wa.link/0dn1l1'
           target='_blank'
-          titleClassName='max-sm:text-xs'
+          titleClassName='max-sm:text-xs dark:text-white'
         />
         <div className='flex-[0.5] max-sm:flex-[0.1]' />
         <ButtonIcon
-          Icon={<BsFillMoonStarsFill />}
-          className='bg-white text-neutral-700'
-          onPress={() => {}}
+          Icon={
+            isDarkmode ? (
+              <BsFillSunFill className='text-neutral-700 dark:text-white' />
+            ) : (
+              <BsFillMoonStarsFill className='text-neutral-700 dark:text-white' />
+            )
+          }
+          className='bg-white text-neutral-700 dark:bg-neutral-800'
+          onPress={onMode}
         />
       </div>
 
-      <div className='flex flex-row bg-white rounded-md p-2 mb-10 max-sm:mx-4'>
+      <div className='flex flex-row bg-white dark:bg-neutral-800 rounded-md p-2 mb-10 max-sm:mx-4'>
         <Button
           title='Portofolio'
+          titleClassName='dark:text-white'
           className={`${
-            activeTab === 'portofolio' ? '!bg-neutral-300' : '!bg-white'
+            activeTab === 'portofolio'
+              ? '!bg-neutral-300 dark:!bg-screen-dark'
+              : '!bg-white dark:!bg-neutral-800'
           } flex-1 justify-center`}
           onPress={() => setActiveTab('portofolio')}
         />
         <Button
           title='Skills'
+          titleClassName='dark:text-white'
           className={`${
-            activeTab === 'skills' ? '!bg-neutral-300' : '!bg-white'
+            activeTab === 'skills'
+              ? '!bg-neutral-300 dark:!bg-screen-dark'
+              : '!bg-white dark:!bg-neutral-800'
           } flex-1 justify-center`}
           onPress={() => setActiveTab('skills')}
         />
@@ -195,7 +246,7 @@ export default function Home() {
       )}
 
       <div className='my-3'>
-        <p className='text-center font-medium text-neutral-700 text-xs'>
+        <p className='text-center font-medium text-neutral-700 dark:text-white text-xs'>
           Created with ❤️️ using Nextjs
         </p>
       </div>
