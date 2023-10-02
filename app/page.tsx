@@ -33,7 +33,10 @@ export default function Home() {
   const [isDarkmode, setIsDarkmode] = useState<boolean>(false)
 
   useEffect(() => {
-    if (
+    if (localStorage.theme === 'light') {
+      document.documentElement.classList.remove('dark')
+      setIsDarkmode(false)
+    } else if (
       localStorage.theme === 'dark' ||
       window.matchMedia('(prefers-color-scheme: dark)').matches
     ) {
