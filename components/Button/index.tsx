@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link, { LinkProps } from 'next/link'
 import { ReactNode } from 'react'
 
 interface Button {
@@ -6,6 +6,10 @@ interface Button {
   onPress?: () => void
   className?: string
   RightComponent?: ReactNode
+  href?: string
+  target?: '_blank' | '_parent' | '_self' | '_top'
+  download?: boolean
+  titleClassName?: string
 }
 
 export default function Button({
@@ -13,14 +17,22 @@ export default function Button({
   onPress,
   className,
   RightComponent,
+  href,
+  target = '_self',
+  download,
+  titleClassName,
 }: Button) {
   return (
     <Link
-      href='/'
+      href={href ?? '/'}
+      target={target}
       onClick={onPress}
-      className={`bg-yellow-500 w-fit px-5 py-2 rounded-[5px] flex flex-row ${className}`}
+      className={`bg-yellow-500 w-fit px-5 py-2 rounded-[5px] flex flex-row justify-center items-center ${className}`}
+      download={download}
     >
-      <p className='text-sm'>{title}</p>
+      <p className={`text-sm text-neutral-700 font-medium ${titleClassName}`}>
+        {title}
+      </p>
       {RightComponent}
     </Link>
   )
