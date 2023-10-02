@@ -108,8 +108,8 @@ export default function Home() {
       <div className='flex flex-row mb-10 max-sm:px-4'>
         <Button
           title='Download CV'
-          RightComponent={<BsDownload size={14} className='ml-2' />}
-          className='flex-1'
+          RightComponent={<BsDownload size={14} className='ml-2 max-sm:ml-1' />}
+          className='flex-1 max-sm:px-3'
           href='/AbdurCV.pdf'
           target='_blank'
           download={true}
@@ -118,7 +118,7 @@ export default function Home() {
         <div className='mx-2 max-sm:mx-1' />
         <Button
           title='Contact me'
-          className='!bg-white flex-1'
+          className='!bg-white flex-1 max-sm:px-3'
           href='https://wa.link/0dn1l1'
           target='_blank'
           titleClassName='max-sm:text-xs'
