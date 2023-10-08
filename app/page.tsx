@@ -151,7 +151,7 @@ export default function Home() {
         <Button
           title='Download CV'
           RightComponent={<BsDownload size={14} className='ml-2 max-sm:ml-1' />}
-          className='flex-1 max-sm:px-3 dark:bg-yellow-300'
+          className='flex-1 max-sm:px-3 dark:bg-yellow-300 rounded-full'
           href='/AbdurCV.pdf'
           target='_blank'
           download={true}
@@ -160,7 +160,7 @@ export default function Home() {
         <div className='mx-2 max-sm:mx-1' />
         <Button
           title='Contact me'
-          className='!bg-white flex-1 max-sm:px-3 dark:!bg-neutral-800'
+          className='!bg-white flex-1 max-sm:px-3 dark:!bg-neutral-800 rounded-full'
           href='https://wa.link/0dn1l1'
           target='_blank'
           titleClassName='max-sm:text-xs dark:text-white'
@@ -179,7 +179,7 @@ export default function Home() {
         />
       </div>
 
-      <div className='flex flex-row bg-white dark:bg-neutral-800 rounded-md p-2 mb-10 max-sm:mx-4'>
+      <div className='flex flex-row bg-white dark:bg-neutral-800 rounded-full p-2 mb-10 max-sm:mx-4'>
         <Button
           title='Portofolio'
           titleClassName='dark:text-white'
@@ -187,7 +187,7 @@ export default function Home() {
             activeTab === 'portofolio'
               ? '!bg-neutral-300 dark:!bg-screen-dark'
               : '!bg-white dark:!bg-neutral-800'
-          } flex-1 justify-center`}
+          } flex-1 justify-center rounded-full`}
           onPress={() => setActiveTab('portofolio')}
         />
         <Button
@@ -197,7 +197,7 @@ export default function Home() {
             activeTab === 'skills'
               ? '!bg-neutral-300 dark:!bg-screen-dark'
               : '!bg-white dark:!bg-neutral-800'
-          } flex-1 justify-center`}
+          } flex-1 justify-center rounded-full`}
           onPress={() => setActiveTab('skills')}
         />
       </div>
