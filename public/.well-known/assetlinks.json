@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "vmatch",
+      "package_name": "com.vmatch.live.app",
+      "sha256_cert_fingerprints": ["0A:81:BF:A4:3C:AE:0A:C8:83:BD:C5:09:69:B3:1F:BD:4E:62:3D:59:AC:94:4B:D2:CA:CE:95:94:45:21:F0:E4", "90:9B:BE:3F:B5:46:FD:E5:6F:DE:02:44:36:59:4B:D6:20:EB:8D:93:74:F3:03:1C:D0:DA:EA:7C:B3:7E:AA:83"]
+    }
+  }
+]
