@@ -1,22 +1,12 @@
 {
   "applinks": {
     "apps": [],
-    "defaults": {
-      "percentEncoded": false
-    },
     "details": [
       {
         "appID": "948PPYL66A.com.vmatch.live",
         "paths": [
-          "*"
-        ],
-        "appIDs": [
-          "948PPYL66A.com.vmatch.live"
-        ],
-        "components": [
-          {
-            "/": "/*"
-          }
+          "*",
+          "/"
         ]
       }
     ]
